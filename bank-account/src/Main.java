@@ -1,5 +1,7 @@
 import fr.epita.bank.datamodel.*;
 
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -9,8 +11,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("Welcome to the bank !");
+
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.println("please enter the stock ticker :");
+
         Stock stock = new Stock();
-        stock.setTicker("GOLD");
+        String tickerName = scanner.nextLine();
+        stock.setTicker(tickerName);
         stock.setPrice(30000.0);
 
         stock = new Stock("GOLD", 30000.0);
