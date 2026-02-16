@@ -41,4 +41,21 @@ public class StockOrder {
     public void setCommission(Double commission) {
         this.commission = commission;
     }
+
+
+    public InvestmentAccount getInvestmentAccount() {
+        return investmentAccount;
+    }
+
+    public void setInvestmentAccount(InvestmentAccount investmentAccount) {
+        this.investmentAccount = investmentAccount;
+    }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
 }
