@@ -1,7 +1,4 @@
-import fr.epita.bank.datamodel.Customer;
-import fr.epita.bank.datamodel.InvestmentAccount;
-import fr.epita.bank.datamodel.Stock;
-import fr.epita.bank.datamodel.StockOrder;
+import fr.epita.bank.datamodel.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -28,9 +25,30 @@ public class Main {
         // when the operation is created, the balance is updated (initial minus the cost of the operation)
 
         Double quantity = 1.0;
+        buyStockFromAccount(stock, quantity, investmentAccount);
+        // then Quentin decides to open a savings account and to initialize the balance to 3000€
+
+        SavingsAccount savingsAccount = new SavingsAccount();
+        savingsAccount.setBalance(3000.0);
+
+
+        // what will be the earned interest over 1 year if he doesn't change the balance
+        Double interestRate = 0.05;
+        savingsAccount.setInterestRate(interestRate);
+        savingsAccount.setBalance(savingsAccount.getBalance() + interestRate * savingsAccount.getBalance());
+
+        System.out.println("final balances : \n - investment " + investmentAccount.getBalance() + "\n - savings " + savingsAccount.getBalance());
+
+
+
+    }
+
+    private static void buyStockFromAccount(Stock stock, Double quantity, InvestmentAccount investmentAccount) {
         Double price = stock.getPrice();
         Double commission = 0.10 * quantity * price;
 
+
+        investmentAccount.setBalance(investmentAccount.getBalance() - commission - quantity * price);
         StockOrder order = new StockOrder();
         order.setStock(stock);
         order.setInvestmentAccount(investmentAccount);
@@ -39,12 +57,5 @@ public class Main {
 
 
         order.setCommission(commission);
-
-        investmentAccount.setBalance(investmentAccount.getBalance() - commission - quantity * price);
-        // then Quentin decides to open a savings account and to initialize the balance to 3000€
-
-        // what will be the earned interest over 1 year if he doesn't change the balance
-
-
     }
 }
