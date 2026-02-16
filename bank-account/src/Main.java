@@ -10,9 +10,10 @@ public class Main {
     public static void main(String[] args) {
 
         Stock stock = new Stock();
-
         stock.setTicker("GOLD");
         stock.setPrice(30000.0);
+
+        stock = new Stock("GOLD", 30000.0);
 
         //create a scenario where a customer called Quentin wants to buy 1 stock of GOLD,
         Customer customer = new Customer();
