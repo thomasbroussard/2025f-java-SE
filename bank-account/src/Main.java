@@ -1,4 +1,5 @@
 import fr.epita.bank.datamodel.*;
+import fr.epita.bank.services.AccountLogicService;
 
 import java.util.Scanner;
 
@@ -6,7 +7,7 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    private static final double COMMISSION_RATE = 0.10;
+
     public static final double DEFAULT_INTEREST_RATE = 0.05;
 
     public static void main(String[] args) {
@@ -39,7 +40,7 @@ public class Main {
             // when the operation is created, the balance is updated (initial minus the cost of the operation)
 
             Double quantity = 1.0;
-            buyStockFromAccount(stock, quantity, investmentAccount);
+            AccountLogicService.buyStockFromAccount(stock, quantity, investmentAccount);
             // then Quentin decides to open a savings account and to initialize the balance to 3000€
 
             SavingsAccount savingsAccount = new SavingsAccount();
@@ -58,17 +59,6 @@ public class Main {
 
     }
 
-    private static void buyStockFromAccount(Stock stock, Double quantity, InvestmentAccount investmentAccount) {
-        Double price = stock.getPrice();
-        Double commission = COMMISSION_RATE * quantity * price;
 
-        investmentAccount.setBalance(investmentAccount.getBalance() - commission - quantity * price);
-        StockOrder order = new StockOrder();
-        order.setStock(stock);
-        order.setInvestmentAccount(investmentAccount);
-        order.setQuantity(quantity);
-        order.setUnitPrice(price);
 
-        order.setCommission(commission);
-    }
 }
