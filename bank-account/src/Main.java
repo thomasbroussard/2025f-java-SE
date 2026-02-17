@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Main {
 
 
-    public static final double DEFAULT_INTEREST_RATE = 0.05;
 
     public static void main(String[] args) {
 
@@ -48,9 +47,7 @@ public class Main {
 
 
             // what will be the earned interest over 1 year if he doesn't change the balance
-            Double interestRate = DEFAULT_INTEREST_RATE;
-            savingsAccount.setInterestRate(interestRate);
-            savingsAccount.setBalance(savingsAccount.getBalance() + interestRate * savingsAccount.getBalance());
+            AccountLogicService.computeInterests(savingsAccount);
 
             System.out.println("final balances : \n - investment " + investmentAccount.getBalance() + "\n - savings " + savingsAccount.getBalance());
 
@@ -58,6 +55,7 @@ public class Main {
 
 
     }
+
 
 
 
