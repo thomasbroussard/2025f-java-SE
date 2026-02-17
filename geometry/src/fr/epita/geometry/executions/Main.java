@@ -3,6 +3,11 @@ package fr.epita.geometry.executions;
 import fr.epita.geometry.datamodel.*;
 import org.w3c.dom.css.Rect;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -34,6 +39,15 @@ public class Main {
             }
             globalArea += instance.calculateArea();
         }
+
+        List<String> list = List.of("a", "b", "c");
+        List<String> list2 = new Stack<>();
+        ArrayList<String> list3 = new ArrayList<>();
+
+
+
+
+
 
 
 
