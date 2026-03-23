@@ -1,6 +1,8 @@
 package fr.epita.tests.file;
 
-import fr.epita.biostat.datamodel.BioStatEntry;import fr.epita.biostat.services.CSVService;
+import fr.epita.biostat.datamodel.BioStatEntry;
+import fr.epita.biostat.services.CSVService;
+import fr.epita.biostat.services.StatService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,9 +25,10 @@ public class BiostatEntryReadingTest {
         double averageAge = totalAge / entries.size();
 
         Function<BioStatEntry, Integer> f = BioStatEntry::getAge;
-        computeAverage(entries, BioStatEntry::getAge);
-        computeAverage(entries, BioStatEntry::getHeight);
-        computeAverage(entries, BioStatEntry::getWeight);
+
+        StatService.computeAverage(entries, BioStatEntry::getAge);
+        StatService.computeAverage(entries, BioStatEntry::getHeight);
+        StatService.computeAverage(entries, BioStatEntry::getWeight);
 
         entries.stream().mapToInt(BioStatEntry::getAge).average();
         entries.stream().mapToInt(BioStatEntry::getHeight).average();
@@ -47,13 +50,5 @@ public class BiostatEntryReadingTest {
         System.out.println(distribution);
     }
 
-
-    private static void computeAverage(List<BioStatEntry> entries, Function<BioStatEntry, Integer> f) {
-        double total = 0;
-        for(BioStatEntry entry : entries){
-            total += f.apply(entry);
-        }
-        double average = total / entries.size();
-    }
 
 }
