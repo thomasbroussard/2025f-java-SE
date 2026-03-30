@@ -37,6 +37,21 @@ public class DBTest {
             System.out.println(resultSet.getString("name"));
         }
 
+        String updateQuery =
+                """ 
+                UPDATE BIOSTATS SET age=? WHERE name=?
+                """;
+
+        PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
+        updateStatement.setInt(1, 40);
+        updateStatement.setString(2, "thomas");
+        updateStatement.execute();
+
+        resultSet = selectStatement.executeQuery();
+        while(resultSet.next()){
+            System.out.println(resultSet.getString("name"));
+            System.out.println(resultSet.getInt("age"));
+        }
 
 
 
