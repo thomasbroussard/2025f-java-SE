@@ -3,12 +3,14 @@ package fr.epita.tests.db;
 import fr.epita.biostat.datamodel.BioStatEntry;
 import fr.epita.biostat.services.BioStatEntryDataService;
 
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.List;
 
 public class DataServiceTest {
 
     public static void main(String[] args) throws SQLException {
+        System.setProperty("conf.file.path", "S:\\Work\\ae\\Epita\\workspaces\\2025f-ooa-uml-java-SE\\Java-Project\\biostat\\conf.properties");
+        System.getenv().get("myapp.conf.file.path");
         BioStatEntryDataService service = new BioStatEntryDataService();
         BioStatEntry entry = new BioStatEntry("Thomas", "M", 39, null, null);
         entry.setId(1);
