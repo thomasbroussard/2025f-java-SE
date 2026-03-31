@@ -67,4 +67,15 @@ public class BioStatEntry {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "BioStatEntry{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", height=" + height +
+                ", weight=" + weight +
+                '}';
+    }
 }
